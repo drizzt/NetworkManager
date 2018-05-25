@@ -64,6 +64,7 @@
 #include "nm-setting-ppp.h"
 #include "nm-setting-pppoe.h"
 #include "nm-setting-serial.h"
+#include "nm-setting-sriov.h"
 #include "nm-setting-tc-config.h"
 #include "nm-setting-team-port.h"
 #include "nm-setting-team.h"
@@ -223,6 +224,8 @@ const char **_nm_ip_address_get_attribute_names (const NMIPAddress *addr, gboole
 gboolean _nm_ip_route_attribute_validate_all (const NMIPRoute *route);
 const char **_nm_ip_route_get_attribute_names (const NMIPRoute *route, gboolean sorted, guint *out_length);
 GHashTable *_nm_ip_route_get_attributes_direct (NMIPRoute *route);
+
+gboolean _nm_sriov_vf_attribute_validate_all (const NMSriovVF *vf, GError **error);
 
 static inline void
 _nm_auto_ip_route_unref (NMIPRoute **v)
@@ -511,4 +514,7 @@ _nm_connection_type_is_master (const char *type)
 gboolean _nm_utils_dhcp_duid_valid (const char *duid, GBytes **out_duid_bin);
 
 /*****************************************************************************/
+
+gboolean _nm_setting_sriov_sort_vfs (NMSettingSriov *setting);
+
 #endif
